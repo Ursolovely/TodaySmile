@@ -1,0 +1,43 @@
+# this program use fibonacci function that is recursion function.
+# anyone input any number. this program print fibonacci numbers less then the input number. 
+# this program will iterate 
+
+def Check(n): 
+  if(int(n) != n ): #confirm float
+    print("this is float number. please input intiger number.")
+    return False
+  elif(n < 0): # confirm minus
+    print("fibonacci start to 1. 양의 정수를 입력해주세요!")
+    return False
+  elif(n == 0): # confirm zero
+    print("이 프로그램은 1 이후부터 출력하기 때문에 피보나치 수열 0은 출력되지 않습니다. 더 큰 정수를 입력해주세요!")
+    return False
+  else:
+    return True
+
+def fib(n):
+  if (n == 0):
+    result = 0
+  elif (n == 1):
+    result = 1
+  else:
+    result = fib(n-1) + fib(n-2) # 재귀 함수 이용
+  return result
+
+## 자료구조를 사용해서 출력한다면, 따로 출력함수가 필요하지 않을 것이라 판단했습니다.
+
+
+con = 1 #프로그램을 계속 할지 판단하는 변수
+while(con != "*"):
+  confirm = 0 # 적절한 n이 들어오는지 검증하는데 사용할 변수
+  while(confirm == False):
+    n = eval(input("n 이하의 피보나치 수열을 출력합니다. 정수 n을 입력해주세요! : "))
+    confirm = Check(n)
+  fiblist = []
+  count = 1
+  while(fib(count) <= n):
+    fiblist.append(fib(count))
+    count += 1
+  print(fiblist)
+  con = input("그만하시려면 *를, 계속 하시려면 그 외를 입력해주세요! : ")
+    
